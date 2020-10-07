@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans:ital,wght@0,400;0,800;1,300&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', Helvetica Neue, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+body {
+  background: #232526; 
+  background: -webkit-linear-gradient(to right, #232526, #414345 150%); 
+  background: linear-gradient(to right, #232526, #414345 150%); 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  font-weight: 800;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.larger {
+  font-size: 120%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

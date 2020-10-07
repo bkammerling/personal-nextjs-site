@@ -2,7 +2,6 @@ import Layout from '../../components/layout'
 import Head from 'next/head'
 import Date from '../../components/date'
 import { fetchEntries } from '../../lib/contentfulPosts'
-import utilStyles from '../../styles/utils.module.css'
 
 export default function Post({ postData }) {
   return (
@@ -11,10 +10,10 @@ export default function Post({ postData }) {
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>
+        <h1 className=''>
           {postData.title}
         </h1>
-        <div className={utilStyles.lightText}>
+        <div className=''>
           <Date dateString={postData.date} />
         </div>
         <br />

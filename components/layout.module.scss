@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.socialIcons {
+  a {
+    color: black;
+    svg {
+      transition: transform .4s;
+    }
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.headerImage {
+  width: 3rem;
+  height: 4rem;
+}
+
+
+.backToHome {
+  margin: 3rem 0 0;
+}

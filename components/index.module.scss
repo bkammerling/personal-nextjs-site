@@ -1,0 +1,27 @@
+.footerProfile {
+  position: fixed;
+  bottom: 10px;
+  border: 5px solid white;
+  border-radius: 50%;
+  width: 140px;
+  z-index: 2000;
+}
+
+.scribble {
+  font-family: 'Caveat', cursive; 
+}
+
+.homeScribble {
+  display: inline-block;
+  margin-top: 80px;
+  transform: translateX(140px) rotate(-15deg);
+  color: white;
+  font-size: 30px;
+  line-height: 1.2;
+  height: 0;
+  margin-bottom: 250px;
+}
+
+.far {
+  transform: rotate(65deg);
+}
