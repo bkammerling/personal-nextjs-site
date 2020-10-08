@@ -5,6 +5,8 @@
 }
 
 .socialIcons {
+  display: flex;
+  flex-direction: row;
   a {
     color: black;
     svg {
