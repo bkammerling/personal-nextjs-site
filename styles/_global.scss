@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans:ital,wght@0,400;0,800;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,300&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', Helvetica Neue, Segoe UI, Roboto, Oxygen, Ubuntu,
+  font-family:  Helvetica Neue, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, sans-serif;
   line-height: 1.6;
   font-size: 16px;
+  overflow: hidden;
 }
 
 body {
-  background: #232526; 
-  background: -webkit-linear-gradient(to right, #232526, #414345 150%); 
-  background: linear-gradient(to right, #232526, #414345 150%); 
+  background: #ECE9E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 * {
@@ -21,7 +22,7 @@ body {
 }
 
 h1, h2 {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 a {
@@ -40,4 +41,39 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+
+.scroller {
+  overflow: scroll;
+  height: 100vh;
+  scroll-snap-type: y proximity;
+}
+
+article {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+#blob1Clip {
+  position: absolute;
+  z-index: 10;
+  top: 5px;
+  left: 10px;
+  width: 30vw;
+  height: 20vw;
+  animation: moveAround infinite 140s linear;
+}
+
+.purpleGradient {
+  background: #9D50BB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+
+.seaGradient {
+  background: #00d2ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

@@ -21,16 +21,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Container>
-        <header className={`${styles.header} p-2`}> 
-          <img
-            src="/images/logo-3d-white.svg"
-            className={`${styles.headerImage}`}
-            alt={`${name}'s minimal logo`}
-          />
-        </header>
-  
-        <main className="px-2">{children}</main>
+
+        <main className="">{children}</main>
   
         {!home && (
           <div className={styles.backToHome}>
@@ -39,7 +31,7 @@ export default function Layout({ children, home }) {
             </Link>
           </div>
         )}
-      </Container>
+      
       <Navbar fixed="bottom" bg="light" variant="light" className="justify-content-between">
         <Container className="p-2">
           <div>
