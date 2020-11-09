@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import styles from './layout.module.scss'
-import Drawer from './Drawer.js'
+import Navigation from './Drawer.js'
 
-import Container from 'react-bootstrap/Container';
-import Link from 'next/link'
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/brands';
 
 const name = 'Ben Kammerling'
-export const siteTitle = 'Next.js Ben Kammerling Website'
+export const siteTitle = "Ben Kammerling's Experiments"
 
-export default function Layout({ children, home }) {
+export default function ExperimentLayout({ bg, children }) {
   return (
     <>
       <Head>
@@ -20,18 +20,19 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Drawer />
-      <main className="">{children}</main>
+      <Navigation />
       
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
+      <main className={bg}>
+        <div className="wrapper">
+          {children}
         </div>
-      )}
-    
+      </main>
+
+      <footer>
+        <h1>See the other experiments</h1>
+      </footer>
       
+
     </>
   )
 }

@@ -13,7 +13,7 @@ export default function BlobSVG({ gradient, id }) {
           <stop offset="5%" stopColor="#ff9966" />
           <stop offset="95%" stopColor="#ff5e62" />
         </linearGradient>
-        <pattern id="benPhoto" patternUnts="userSpaceOnUise" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <pattern id="benPhoto" patternContentUnits="objectBoundingBox" width="1" height="1">
           <image href="/images/profile.jpg" x="0" y="0" preserveAspectRatio="xMidYMid slice" width="1" height="1" />
         </pattern>
       </defs>

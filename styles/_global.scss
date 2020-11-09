@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,300&display=swap');
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
 
 html,
 body {
@@ -8,7 +10,6 @@ body {
     Cantarell, Fira Sans, Droid Sans, sans-serif;
   line-height: 1.6;
   font-size: 16px;
-  overflow: hidden;
 }
 
 body {
@@ -25,13 +26,48 @@ h1, h2 {
   font-weight: 600;
 }
 
+h1 {
+  font-size: 8vw;
+  line-height: 1;
+  @include media-breakpoint-up(md) { 
+    font-size: 48px;
+  }
+}
+h2 {
+  font-size: 4vw;
+  @include media-breakpoint-up(md) { 
+    font-size: 24px;
+  }
+}
+
+
+.wrapper {
+  padding: 80px 0;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-subtitle {
+  opacity: 0.5;
+}
+
 a {
-  color: #0070f3;
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
 }
 
 a:hover {
+  color: inherit;
+  opacity: .7;
   text-decoration: underline;
+}
+
+body {
+  .MuiIconButton-root, .MuiIconButton-root:focus, .MuiButtonBase-root {
+    outline: none;
+  }
 }
 
 .larger {
@@ -46,23 +82,20 @@ img {
 .scroller {
   overflow: scroll;
   height: 100vh;
-  scroll-snap-type: y proximity;
+  //scroll-snap-type: y proximity;
 }
 
-article {
-  height: 100vh;
-  scroll-snap-align: start;
-  position: relative;
+#fontswitch {
+  .MuiTypography-body1 {
+    font-family: inherit;
+  }
 }
 
-#blob1Clip {
+.bottomParagraph {
+  max-width: 300px;
+  margin-top: 80px;
   position: absolute;
-  z-index: 10;
-  top: 5px;
-  left: 10px;
-  width: 30vw;
-  height: 20vw;
-  animation: moveAround infinite 140s linear;
+  bottom: 40px;
 }
 
 .purpleGradient {
@@ -76,4 +109,98 @@ article {
   background: #00d2ff;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.redGradient {
+  background: #a73737;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7a2828, #a73737);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7a2828, #a73737); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  a {
+    color: black;
+    svg {
+      width: 20px;
+      transition: transform .4s;
+    }
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+}
+
+
+.blobWrapper {
+  svg {
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 10px;
+    width: 30vw;
+    min-width: 400px;
+    opacity: .7;
+    animation: moveAround infinite 40s linear;
+    &:nth-child(2) {
+      width: 20vw;
+      min-width: 300px;
+      animation: moveAround2 infinite 30s linear;
+    }
+  }
+}
+
+
+@keyframes moveAround {
+  0% {
+    top: -5vh;
+    left: 3vw;
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    top: 60vh;
+    left: 30vw;
+    transform: rotate(-70deg);
+    filter: hue-rotate(20deg);
+  }
+  55% {
+    top: 20vh;
+    left: 75vw;
+    transform: rotate(-190deg);
+    filter: hue-rotate(20deg);
+  }
+  100% {
+    top: -5vh;
+    left: 3vw;
+    transform: rotate(-360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes moveAround2 {
+  0% {
+    top: 60vh;
+    left: 30vw;
+    transform: rotate(120deg);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    top: 30vh;
+    left: 10vw;
+    transform: rotate(230deg);
+    filter: hue-rotate(120deg);
+  }
+  66% {
+    top: -10vh;
+    left: 70vw;
+    transform: rotate(340deg);
+    filter: hue-rotate(240deg);
+  }
+  100% {
+    top: 60vh;
+    left: 30vw;
+    transform: rotate(120deg);
+    filter: hue-rotate(360deg);
+  }
 }

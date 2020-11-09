@@ -1,9 +1,10 @@
 .footerProfile {
   position: fixed;
   bottom: 10px;
-  border: 5px solid white;
+  left: 10px;
+  border: 4px solid white;
   border-radius: 50%;
-  width: 140px;
+  width: 80px;
   z-index: 2000;
 }
 
@@ -25,73 +26,4 @@
 .far {
   width: 32px;
   transform: rotate(65deg);
-}
-
-.blobWrapper {
-  svg {
-    position: absolute;
-    z-index: 10;
-    top: 5px;
-    left: 10px;
-    width: 30vw;
-    opacity: .7;
-    animation: moveAround infinite 140s linear;
-    &:nth-child(2) {
-      animation: moveAround2 infinite 90s linear;
-    }
-  }
-}
-
-
-@keyframes moveAround {
-  0% {
-    top: 0vh;
-    left: 2vw;
-    transform: rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  33% {
-    top: 60vh;
-    left: 50vw;
-    transform: rotate(-70deg);
-    filter: hue-rotate(120deg);
-  }
-  55% {
-    top: 20vh;
-    left: 60vw;
-    transform: rotate(-190deg);
-    filter: hue-rotate(240deg);
-  }
-  100% {
-    top: 0vh;
-    left: 2vw;
-    transform: rotate(-360deg);
-    filter: hue-rotate(3600deg);
-  }
-}
-@keyframes moveAround2 {
-  0% {
-    top: 7vh;
-    left: 65vw;
-    transform: rotate(120deg);
-    filter: hue-rotate(0deg);
-  }
-  33% {
-    top: 40vh;
-    left: 0vw;
-    transform: rotate(230deg);
-    filter: hue-rotate(120deg);
-  }
-  55% {
-    top: 60vh;
-    left: 20vw;
-    transform: rotate(340deg);
-    filter: hue-rotate(240deg);
-  }
-  100% {
-    top: 7vh;
-    left: 65vw;
-    transform: rotate(120deg);
-    filter: hue-rotate(360deg);
-  }
 }
