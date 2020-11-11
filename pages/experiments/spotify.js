@@ -12,6 +12,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { Radar, defaults } from 'react-chartjs-2';
 defaults.global.defaultFontColor = '#fff';
 defaults.global.elements.line.borderWidth = 0;
@@ -147,7 +149,7 @@ export default class SpotifyPage extends Component {
             <Button
               variant="contained"
               color="primary"
-              startIcon={<i className="fab fa-spotify"></i>}
+              startIcon={<FontAwesomeIcon icon={["fab","spotify"]} />}
               onClick={this.authorize}
             >
               Login to Spotify

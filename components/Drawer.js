@@ -11,6 +11,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import IconButton from '@material-ui/core/IconButton';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { font, icons, chartLine } from '@fortawesome/free-solid-svg-icons'
+
 import Link from 'next/link'
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -58,13 +62,13 @@ export default function Navigation() {
       <List>
         <div className={classes.drawerHeader}>
           <IconButton onClick={toggleDrawer(false)} className="mx-2 mb-1" style={{ width: '42px', height: '42px'}}> 
-            <i className="fas fa-chevron-left fa-xs"></i>
+            <FontAwesomeIcon icon="chevron-left" />
           </IconButton>
         </div>
         <Divider />
         <Link href="/" passHref>
           <ListItem button key="Home">
-            <ListItemIcon><i className="fas fa-home"></i></ListItemIcon>
+            <ListItemIcon><FontAwesomeIcon icon="home" /></ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
@@ -76,25 +80,25 @@ export default function Navigation() {
         </ListSubheader>
         <Link href="/experiments/spotify" passHref>
           <ListItem button key="spotify">
-            <ListItemIcon><i className="fab fa-spotify"></i></ListItemIcon>
+            <ListItemIcon><FontAwesomeIcon icon={["fab", "spotify"]} /></ListItemIcon>
             <ListItemText primary="Spotify" />
           </ListItem>
         </Link>
         <Link href="/experiments/trends" passHref>
           <ListItem button key="trends">
-            <ListItemIcon><i className="fas fa-chart-line"></i></ListItemIcon>
+            <ListItemIcon><FontAwesomeIcon icon="chart-line" /></ListItemIcon>
             <ListItemText primary="Google Trends" />
           </ListItem>
         </Link>
         <Link href="/experiments/svgplay" passHref>
           <ListItem button key="svgplay">
-            <ListItemIcon><i className="fas fa-icons"></i></ListItemIcon>
+            <ListItemIcon><FontAwesomeIcon icon="icons" /></ListItemIcon>
             <ListItemText primary="SVG Playground" />
           </ListItem>
         </Link>
         <Link href="/experiments/fonts" passHref>
           <ListItem button key="fonts">
-            <ListItemIcon>-<i className="fas fa-font"></i></ListItemIcon>
+            <ListItemIcon>-<FontAwesomeIcon icon="font" /></ListItemIcon>
             <ListItemText primary="Google Fonts" />
           </ListItem>
         </Link>
@@ -110,21 +114,21 @@ export default function Navigation() {
         style={{ pointerEvents:' none' }}
       >
         <React.Fragment key='left'>
-          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)} style={{ pointerEvents:' all' }}>
-            <i className="fas fa-bars"></i>
+          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}  style={{ pointerEvents:' all' }}>
+            <FontAwesomeIcon icon="bars" />
           </Fab>
-          <div className="socialIcons">
-            <a target="_blank" href="http://instagram.com/bkammerling">
-              <i className="fab fa-instagram mr-3 fa-lg"></i>
+          <div className="socialIcons" style={{ pointerEvents:' all' }}>
+            <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
+              <FontAwesomeIcon icon={["fab", "instagram"]} size="lg" />
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/bkammerling/">
-              <i className="fab fa-linkedin-in mr-3 fa-lg"></i>
+            <a target="_blank" className="mr-3" href="https://www.linkedin.com/in/bkammerling/">
+            <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="lg" />
             </a>
-            <a target="_blank" href="https://github.com/bkammerling/">
-              <i className="fab fa-github mr-3 fa-lg"></i>
+            <a target="_blank" className="mr-3" href="https://github.com/bkammerling/">
+            <FontAwesomeIcon icon={["fab", "github"]} size="lg" />
             </a>
             <a target="_blank" href="mailto:bkammerling@googlemail.com">
-              <i className="far fa-envelope fa-lg"></i>
+              <FontAwesomeIcon icon={["far", "envelope"]} size="lg" />
             </a>
           </div>
           <Drawer anchor='left' open={state['left']} onClose={toggleDrawer(false)}>
