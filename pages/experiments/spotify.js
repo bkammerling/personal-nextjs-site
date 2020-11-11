@@ -11,8 +11,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Icon from '@material-ui/core/Icon';
 
 import { Radar, defaults } from 'react-chartjs-2';
 defaults.global.defaultFontColor = '#fff';
@@ -149,7 +148,7 @@ export default class SpotifyPage extends Component {
             <Button
               variant="contained"
               color="primary"
-              startIcon={<FontAwesomeIcon icon={["fab","spotify"]} />}
+              startIcon={<Icon className="fab fa-spotify" style={{ fontSize: 15 }}  />}
               onClick={this.authorize}
             >
               Login to Spotify
@@ -244,10 +243,10 @@ class TrackListItem extends Component {
           <Avatar variant="square" className={styles.albumArt}  onClick={() => playSong(track.preview_url)}>
             <img src={track.album.images[1].url} alt={`Album art for ${track.album.name} by ${track.artists[0].name}`} />
             <div className="position-absolute" style={{ display: nowPlaying && trackPlaying ? 'block' : 'none'}}>
-              <i className="fas fa-pause fa-xs "></i>
+              <Icon className="fas fa-pause" style={{ fontSize: 15 }}  />
             </div>
             <div className="position-absolute" style={{ display: nowPlaying && trackPlaying ? 'none' : 'block'}}>
-              <i className="fas fa-play fa-xs "></i>
+              <Icon className="fas fa-play" style={{ fontSize: 15 }}  />
             </div>
           </Avatar>
         </ListItemAvatar>

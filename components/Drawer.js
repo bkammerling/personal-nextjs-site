@@ -13,9 +13,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { font, icons, chartLine } from '@fortawesome/free-solid-svg-icons'
-
 import Link from 'next/link'
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -63,7 +60,7 @@ export default function Navigation() {
       <List>
         <div className={classes.drawerHeader}>
           <IconButton onClick={toggleDrawer(false)} className="mx-2 mb-1" style={{ width: '42px', height: '42px'}}> 
-            <FontAwesomeIcon icon="chevron-left" size="xs" />
+            <Icon className="fas fa-chevron-left" style={{ fontSize: 10 }}  />
           </IconButton>
         </div>
         <Divider />
@@ -83,25 +80,25 @@ export default function Navigation() {
         </ListSubheader>
         <Link href="/experiments/spotify" passHref>
           <ListItem button key="spotify">
-            <ListItemIcon><FontAwesomeIcon icon={["fab", "spotify"]} /></ListItemIcon>
+            <ListItemIcon><Icon className="fab fa-spotify" style={{ fontSize: 15 }}  /></ListItemIcon>
             <ListItemText primary="Spotify" />
           </ListItem>
         </Link>
         <Link href="/experiments/trends" passHref>
           <ListItem button key="trends">
-            <ListItemIcon><FontAwesomeIcon icon="chart-line" /></ListItemIcon>
+            <ListItemIcon><Icon className="fas fa-chart-line" style={{ fontSize: 15 }}  /></ListItemIcon>
             <ListItemText primary="Google Trends" />
           </ListItem>
         </Link>
         <Link href="/experiments/svgplay" passHref>
           <ListItem button key="svgplay">
-            <ListItemIcon><FontAwesomeIcon icon="icons" /></ListItemIcon>
+            <ListItemIcon><Icon className="fas fa-icons" style={{ fontSize: 15 }}  /></ListItemIcon>
             <ListItemText primary="SVG Playground" />
           </ListItem>
         </Link>
         <Link href="/experiments/fonts" passHref>
           <ListItem button key="fonts">
-            <ListItemIcon>-<FontAwesomeIcon icon="font" /></ListItemIcon>
+            <ListItemIcon><Icon className="fas fa-font" style={{ fontSize: 15 }}  /></ListItemIcon>
             <ListItemText primary="Google Fonts" />
           </ListItem>
         </Link>
@@ -122,16 +119,16 @@ export default function Navigation() {
           </Fab>
           <div className="socialIcons" style={{ pointerEvents:' all' }}>
             <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
-              <FontAwesomeIcon icon={["fab", "instagram"]} size="lg" />
+              <Icon className="fab fa-intagram" style={{ fontSize: 15 }}  />
             </a>
             <a target="_blank" className="mr-3" href="https://www.linkedin.com/in/bkammerling/">
-            <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="lg" />
+              <Icon className="fab fa-linkedin-in" style={{ fontSize: 15 }}  />
             </a>
             <a target="_blank" className="mr-3" href="https://github.com/bkammerling/">
-            <FontAwesomeIcon icon={["fab", "github"]} size="lg" />
+              <Icon className="fab fa-github" style={{ fontSize: 15 }}  />
             </a>
             <a target="_blank" href="mailto:bkammerling@googlemail.com">
-              <FontAwesomeIcon icon={["far", "envelope"]} size="lg" />
+              <Icon className="far fa-envelope" style={{ fontSize: 15 }}  />
             </a>
           </div>
           <Drawer anchor='left' open={state['left']} onClose={toggleDrawer(false)}>
