@@ -62,13 +62,15 @@ export default function Navigation() {
       <List>
         <div className={classes.drawerHeader}>
           <IconButton onClick={toggleDrawer(false)} className="mx-2 mb-1" style={{ width: '42px', height: '42px'}}> 
-            <FontAwesomeIcon icon="chevron-left" />
+            <FontAwesomeIcon icon="chevron-left" size="xs" />
           </IconButton>
         </div>
         <Divider />
         <Link href="/" passHref>
           <ListItem button key="Home">
-            <ListItemIcon><FontAwesomeIcon icon="home" /></ListItemIcon>
+            <ListItemIcon>
+              <SvgIcon><FontAwesomeIcon icon="home" /></SvgIcon>
+            </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
