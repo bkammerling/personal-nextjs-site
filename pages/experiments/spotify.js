@@ -64,7 +64,7 @@ export default class SpotifyPage extends Component {
     '&state=' + btoa(state) +
     '&client_id=' + clientId +
     (scopes ? '&scope=' + encodeURIComponent(scopes.join(' ')) : '') +
-    '&redirect_uri=' + encodeURIComponent(host+redirectUri);
+    '&redirect_uri=' + encodeURIComponent("https://benkammerling.co.uk/experiments/spotify");
     window.location.replace(authorizeURL);
   }
 

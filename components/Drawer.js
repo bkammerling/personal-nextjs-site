@@ -11,6 +11,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { font, icons, chartLine } from '@fortawesome/free-solid-svg-icons'
