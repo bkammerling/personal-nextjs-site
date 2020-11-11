@@ -11,7 +11,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import Icon from '@material-ui/core/Icon';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { font, icons, chartLine } from '@fortawesome/free-solid-svg-icons'
@@ -70,7 +70,7 @@ export default function Navigation() {
         <Link href="/" passHref>
           <ListItem button key="Home">
             <ListItemIcon>
-              <SvgIcon><FontAwesomeIcon icon="home" /></SvgIcon>
+              <Icon className="fas fa-home" style={{ fontSize: 15 }}  />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
@@ -118,7 +118,7 @@ export default function Navigation() {
       >
         <React.Fragment key='left'>
           <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}  style={{ pointerEvents:' all' }}>
-            <FontAwesomeIcon icon="bars" />
+            <Icon className="fas fa-bars" style={{ fontSize: 14 }}  />
           </Fab>
           <div className="socialIcons" style={{ pointerEvents:' all' }}>
             <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
