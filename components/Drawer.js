@@ -94,7 +94,7 @@ export default function Navigation() {
         </Link>
         <Link href="/experiments/fonts" passHref>
           <ListItem button key="fonts">
-            <ListItemIcon><i className="fas fa-font"></i></ListItemIcon>
+            <ListItemIcon>-<i className="fas fa-font"></i></ListItemIcon>
             <ListItemText primary="Google Fonts" />
           </ListItem>
         </Link>
@@ -107,9 +107,10 @@ export default function Navigation() {
       <Navbar 
         fixed="top" 
         className="justify-content-between p-3"
+        style={{ pointerEvents:' none' }}
       >
         <React.Fragment key='left'>
-          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}>
+          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)} style={{ pointerEvents:' all' }}>
             <i className="fas fa-bars"></i>
           </Fab>
           <div className="socialIcons">

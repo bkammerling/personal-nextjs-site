@@ -1,41 +1,48 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
 import ExperimentLayout from '../../components/experiment-layout'
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Col } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
+
+import { Radar, defaults } from 'react-chartjs-2';
+defaults.global.defaultFontColor = '#fff';
+defaults.global.elements.line.borderWidth = 0;
+defaults.global.elements.line.borderColor = 'rgba(0,0,0,0)';
 
 import styles from '../../components/spotify.module.scss'
 
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const scopes = ['user-read-recently-played', 'user-top-read', 'user-library-read'],
-  redirectUri = 'http://localhost:3000/experiments/spotify',
+  redirectUri = '/experiments/spotify',
   clientId = '469f085aa1ad4af1af812e7588a18f60',
   state = new Date().getTime();
+let host = '';
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: clientId,
-  redirectUri: redirectUri
+  clientId: clientId
 });
-
 
 export default class SpotifyPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       accessToken:'',
-      topTracks: []
+      topTracks: [],
+      radarData: {}
     }
   }
 
   componentDidMount() {
+    host = 'http://' + window.location.host;
     const parsedHash = new URLSearchParams(
       window.location.hash.substr(1) // skip the first char (#)
     );
@@ -55,7 +62,7 @@ export default class SpotifyPage extends Component {
     '&state=' + btoa(state) +
     '&client_id=' + clientId +
     (scopes ? '&scope=' + encodeURIComponent(scopes.join(' ')) : '') +
-    '&redirect_uri=' + encodeURIComponent(redirectUri);
+    '&redirect_uri=' + encodeURIComponent(host+redirectUri);
     window.location.replace(authorizeURL);
   }
 
@@ -70,6 +77,7 @@ export default class SpotifyPage extends Component {
       spotifyApi.setAccessToken(token);
       this.getData();
     }
+    window.history.pushState({},"Spotify Experiment - Authorized!",window.location.href.split('#')[0])
   }
   
   errorState(message) {
@@ -80,15 +88,51 @@ export default class SpotifyPage extends Component {
     spotifyApi.getMyTopTracks()
       .then((data) => {
         let topTracks = data.body.items;
-        console.log(topTracks);
+        this.setState({ topTracks });
+        spotifyApi.getAudioFeaturesForTracks(topTracks.map(e => e.id))
+          .then((data) => {
+            const featureData = data.body.audio_features;
+            topTracks = topTracks.map((item, i) => Object.assign({}, item, featureData[i]));
+            this.setState({ topTracks });
+            this.makeChartData();
+            console.log(topTracks);
+          }, function(err) {
+            done(err);
+          });
+
         this.setState({ topTracks })
       }, (err) => {
         console.log('Something went wrong!', err);
       });
   }
 
+  makeChartData() {
+    const trackData = this.state.topTracks;
+    var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
+		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+		  '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
+      '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC'];
+    const r = () => Math.random() * 106 + 150;
+    const chartData = trackData.slice(0,6).map((item, i) => {
+      const score = (item.popularity/100 + item.danceability + item.valence + item.acousticness + item.energy) / 5;
+      console.log(item.name, score);
+      return {
+        label: item.name,
+        backgroundColor: `rgba(${r()-30}, ${r()}, ${r()}, ${1-score})`,
+        //backgroundColor: `rgba(255,255,100, ${score})`,
+        data: [item.popularity, item.danceability*100, item.valence*100, item.acousticness*100, item.energy*100]
+      }
+    });
+    const radarData = {
+      labels: ['Popularity','Danceability','Valence','Acousticness','Energy'],
+      datasets: chartData
+    };
+    console.log(radarData);
+    this.setState({ radarData });
+  }
+
   render() {
-    const { accessToken, topTracks } = this.state;
+    const { accessToken, topTracks, radarData } = this.state;
     return (
       <>
         <Head>
@@ -109,9 +153,38 @@ export default class SpotifyPage extends Component {
               Login to Spotify
             </Button>
           }
-          { topTracks &&
-            <TrackList tracks={topTracks} />
-          }
+          <Row>
+            <Col>
+              { topTracks.length > 0 &&
+                <TrackList tracks={topTracks} />
+               }
+            </Col>
+            <Col>
+            { radarData.datasets &&
+            <>
+               <h2>Radar Example</h2>
+               <Radar
+                data={radarData} 
+                width={600}
+                height={600}
+                options={{scale: {
+                    ticks: {
+                      min: 0,
+                      max: 100
+                    }
+                  },
+                  layout: {
+                    padding: {
+                        top: 50,
+                    }
+                  } 
+                }}
+              />
+            </>
+            }
+            </Col>
+          </Row>
+          
         </Container>
         </ExperimentLayout>
       </>
@@ -123,16 +196,19 @@ class TrackList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nowPlaying : ''
+      nowPlaying: false,
+      urlPlaying : '',
+
     }
   }
 
-  playSong(nowPlaying){
+  playSong(urlPlaying){
     let audio = document.getElementById('audio-preview');
-    if(nowPlaying == this.state.nowPlaying) {
+    if(urlPlaying == this.state.urlPlaying) {
+      this.setState({ nowPlaying: !this.state.nowPlaying });
       audio.paused ? audio.play() : audio.pause();
     } else {
-      this.setState({ nowPlaying });
+      this.setState({ urlPlaying, nowPlaying: true });
       audio.load();
       audio.play();
     }
@@ -141,10 +217,10 @@ class TrackList extends Component {
   render() {
     return (
       <>
-        <audio src={this.state.nowPlaying} autoPlay id="audio-preview"></audio>
-        <List className={styles.list}>
+        <audio src={this.state.urlPlaying} autoPlay={this.state.nowPlaying} id="audio-preview"></audio>
+        <List dense className={styles.list}>
           { this.props.tracks.map((track) => {
-            return <TrackListItem key={track.uri} track={track} playSong={this.playSong.bind(this)} />
+            return <TrackListItem key={track.uri} nowPlaying={this.state.nowPlaying} trackPlaying={this.state.urlPlaying === track.preview_url} track={track} playSong={this.playSong.bind(this)} />
           }, this)}
         </List>
       </>
@@ -152,20 +228,40 @@ class TrackList extends Component {
   }
 }
 
-function TrackListItem({track, playSong}) {
-  return (
-    <>
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar variant="square"  onClick={() => playSong(track.preview_url)}>
-          <img src={track.album.images[1].url} alt={`Album art for ${track.album.name} by ${track.artists[0].name}`} />
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary={track.name} secondary={track.artists[0].name} />
-    </ListItem>
-    <Divider />
-    </>
-  )
+class TrackListItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {track, playSong, trackPlaying, nowPlaying} = this.props;
+    return (
+      <>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar variant="square" className={styles.albumArt}  onClick={() => playSong(track.preview_url)}>
+            <img src={track.album.images[1].url} alt={`Album art for ${track.album.name} by ${track.artists[0].name}`} />
+            <div className="position-absolute" style={{ display: nowPlaying && trackPlaying ? 'block' : 'none'}}>
+              <i className="fas fa-pause fa-xs "></i>
+            </div>
+            <div className="position-absolute" style={{ display: nowPlaying && trackPlaying ? 'none' : 'block'}}>
+              <i className="fas fa-play fa-xs "></i>
+            </div>
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={track.name} secondary={track.artists[0].name} className={styles.text} />
+        <ListItemSecondaryAction>
+          <div className="d-flex flex-row">
+            <div className={styles.dataCircle} style={{ transform: `scale(${track.valence})` }}></div>
+            <div className={styles.dataCircle} style={{ transform: `scale(${track.danceability})` }}></div>
+            <div className={styles.dataCircle} style={{ transform: `scale(${track.energy})` }}></div>
+          </div>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <Divider />
+      </>
+    )
+  }
 }
 
 function getCookie(name) {
