@@ -17,10 +17,11 @@ export default  class TrendList extends Component {
   }
   
   componentDidMount() {
-    fetch('http://localhost:3002/google-trends')
+    fetch('/.netlify/functions/trends')
       .then(response => response.json())
       .then((data) => {
-        let trends = JSON.parse(data);
+        console.log(data);
+        let trends = data;
         trends = trends.default.trendingSearchesDays[0];
         this.setState({ trends, selected: trends.trendingSearches[0].title.query });
       })

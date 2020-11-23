@@ -63,7 +63,7 @@ export default class SpotifyPage extends Component {
     '&state=' + btoa(state) +
     '&client_id=' + clientId +
     (scopes ? '&scope=' + encodeURIComponent(scopes.join(' ')) : '') +
-    '&redirect_uri=' + encodeURIComponent("https://benkammerling.co.uk/experiments/spotify");
+    '&redirect_uri=' + encodeURIComponent(window.location.href);
     window.location.replace(authorizeURL);
   }
 
@@ -137,8 +137,6 @@ export default class SpotifyPage extends Component {
     return (
       <>
         <Head>
-          <script src="https://sdk.scdn.co/spotify-player.js"></script>
-          <script src="/spotifyPage.js"></script>
         </Head>
         <ExperimentLayout bg="redGradient">
         <Container className="text-white">
@@ -173,12 +171,7 @@ export default class SpotifyPage extends Component {
                       min: 0,
                       max: 100
                     }
-                  },
-                  layout: {
-                    padding: {
-                        top: 50,
-                    }
-                  } 
+                  }
                 }}
               />
             </>

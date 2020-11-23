@@ -114,21 +114,21 @@ export default function Navigation() {
         style={{ pointerEvents:' none' }}
       >
         <React.Fragment key='left'>
-          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}  style={{ pointerEvents:' all' }}>
+          <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}  style={{ pointerEvents:' all', width:0  }}>
             <Icon className="fas fa-bars" style={{ fontSize: 14 }}  />
           </Fab>
           <div className="socialIcons" style={{ pointerEvents:' all' }}>
             <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
-              <Icon className="fab fa-intagram" style={{ fontSize: 15 }}  />
+              <Icon className="fab fa-instagram" style={{ fontSize: 25 }}  />
             </a>
             <a target="_blank" className="mr-3" href="https://www.linkedin.com/in/bkammerling/">
-              <Icon className="fab fa-linkedin-in" style={{ fontSize: 15 }}  />
+              <Icon className="fab fa-linkedin-in" style={{ fontSize: 25 }}  />
             </a>
             <a target="_blank" className="mr-3" href="https://github.com/bkammerling/">
-              <Icon className="fab fa-github" style={{ fontSize: 15 }}  />
+              <Icon className="fab fa-github" style={{ fontSize: 25 }}  />
             </a>
             <a target="_blank" href="mailto:bkammerling@googlemail.com">
-              <Icon className="far fa-envelope" style={{ fontSize: 15 }}  />
+              <Icon className="far fa-envelope" style={{ fontSize: 25 }}  />
             </a>
           </div>
           <Drawer anchor='left' open={state['left']} onClose={toggleDrawer(false)}>
