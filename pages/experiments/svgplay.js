@@ -10,14 +10,14 @@ export default class SVGPlay extends React.Component{
     const KUTEscript = document.createElement("script");
     KUTEscript.src = "https://cdn.jsdelivr.net/npm/kute.js@2.0.16/dist/kute.min.js";
     KUTEscript.defer = true;
+    KUTEscript.onload = () => {
+      const SVGscript = document.createElement("script");
+      SVGscript.src = "/svg.js";
+      SVGscript.defer = true;
+      SVGscript.onload = () => this.scriptLoaded();
+      document.body.appendChild(SVGscript);
+    }
     document.body.appendChild(KUTEscript);
-
-    const SVGscript = document.createElement("script");
-    SVGscript.src = "/svg.js";
-    SVGscript.defer = true;
-    SVGscript.onload = () => this.scriptLoaded();
-
-    document.body.appendChild(SVGscript);
   }
 
   scriptLoaded() {

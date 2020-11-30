@@ -9,12 +9,14 @@
     "export": "next export"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@material-ui/core": "^4.11.0",
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.4",
-    "contentful": "^7.14.7",
+    "contentful": "^7.14.14",
     "date-fns": "^2.16.1",
     "google-trends-api": "^4.9.0",
     "gray-matter": "^4.0.2",

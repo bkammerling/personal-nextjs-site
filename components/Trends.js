@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 
-export default  class TrendList extends Component {
+export default class TrendList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +60,7 @@ export default  class TrendList extends Component {
                 <i className="fas fa-search" style={{ color: '#bbb', fontSize: '14px'}}></i>
                 <span className="text-muted d-inline-block mr-2 ml-1">{fullSelected.formattedTraffic} </span>
                 <strong> {fullSelected.title.query}</strong> 
-                <div class={styles.ecosia}>
+                <div className={styles.ecosia}>
                   <a target="_blank" href={`https://www.ecosia.org/search?q=${fullSelected.title.query}`} className="text-muted d-inline-block ml-auto">
                     <small>Search on <img src="/images/ecosia.svg" /></small>
                   </a>
@@ -75,7 +75,7 @@ export default  class TrendList extends Component {
               </div>
               {
                 fullSelected.articles.slice(0,4).map((article,index) => {
-                  return <a className="btn btn-link btn-sm" target="_blank" href={article.url}><i class="fas fa-external-link-alt"></i>  {article.source}</a>
+                  return <a className="btn btn-link btn-sm" key={`externalLink-${index}`} target="_blank" href={article.url}><i className="fas fa-external-link-alt"></i>  {article.source}</a>
                 }, this)
               }
             </CardContent>

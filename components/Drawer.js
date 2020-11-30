@@ -72,6 +72,14 @@ export default function Navigation() {
             <ListItemText primary="Home" />
           </ListItem>
         </Link>
+        <Link href="/projects" passHref>
+          <ListItem button key="Projects">
+            <ListItemIcon>
+              <Icon className="fas fa-laptop-code" style={{ fontSize: 15 }}  />
+            </ListItemIcon>
+            <ListItemText primary="Projects" />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>

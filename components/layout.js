@@ -8,7 +8,7 @@ import Link from 'next/link'
 const name = 'Ben Kammerling'
 export const siteTitle = 'Next.js Ben Kammerling Website'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, bg }) {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ export default function Layout({ children, home }) {
       </Head>
 
       <Drawer />
-      <main className="">{children}</main>
+      <main className={bg}>{children}</main>
       
       {!home && (
         <div className={styles.backToHome}>
