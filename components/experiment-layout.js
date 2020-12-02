@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from './layout.module.scss'
-import Navigation from './Drawer.js'
+import Drawer from './Drawer.js'
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/brands';
@@ -20,13 +20,14 @@ export default function ExperimentLayout({ bg, children }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Navigation />
-      
-      <main className={bg}>
-        <div className="wrapper">
-          {children}
-        </div>
-      </main>
+      <div className={bg}>
+        <Drawer />
+        <main>
+          <div className="wrapper">
+            {children}
+          </div>
+        </main>
+      </div>
 
       <footer>
         <h1>See the other experiments</h1>

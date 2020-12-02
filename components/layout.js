@@ -20,8 +20,10 @@ export default function Layout({ children, home, bg }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Drawer />
-      <main className={bg}>{children}</main>
+      <div className={bg}>
+        <Drawer  />
+        <main >{children}</main>
+      </div>
       
       {!home && (
         <div className={styles.backToHome}>
