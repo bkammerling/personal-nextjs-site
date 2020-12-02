@@ -7,13 +7,13 @@ import styles from '../components/index.module.scss'
 export default class Home extends Component {
   constructor(props){
     super(props);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
+    //this.handleMouseMove = this.handleMouseMove.bind(this);
   }
   componentDidMount() {
-    document.addEventListener("mousemove", this.handleMouseMove);
+    //document.addEventListener("mousemove", this.handleMouseMove);
   }
   componentWillUnmount() {
-    document.removeEventListener("mousemove", this.handleMouseMove);
+    //document.removeEventListener("mousemove", this.handleMouseMove);
   }
   handleMouseMove(event) {
     const target = document.getElementById('looker');
@@ -51,5 +51,5 @@ export default class Home extends Component {
       </Layout>
     )
   }
-  
+
 }

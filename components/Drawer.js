@@ -123,7 +123,7 @@ export default function Navigation() {
       >
         <React.Fragment key='left'>
           <Fab variant="extended" size="medium" onClick={toggleDrawer(true)}  style={{ pointerEvents:' all', width:0  }}>
-            <Icon className="fas fa-bars" style={{ fontSize: 14 }}  />
+            <Icon className="fas fa-bars" width="0" style={{ fontSize: 14 }}  />
           </Fab>
           <div className="socialIcons" style={{ pointerEvents:' all' }}>
             <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
