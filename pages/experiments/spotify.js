@@ -155,7 +155,7 @@ export default class SpotifyPage extends Component {
             >
               Login to Spotify
             </Button>
-            <p className="small mt-2">* When you login here, you will only stay logged in for 1 hour and none of your data is saved.</p>
+            <p className="small mt-2">Login to see your tracks' analysis visualized. You will only stay logged in for 1 hour and none of your data is saved.</p>
           </>
           }
           <Row>

@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Link from 'next/link'
 
 const name = 'Ben Kammerling'
-export const siteTitle = 'Next.js Ben Kammerling Website'
+export const siteTitle = "Ben Kammerling's Next.JS + React Website"
 
 export default function Layout({ children, home, bg }) {
   return (
