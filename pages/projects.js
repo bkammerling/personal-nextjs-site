@@ -28,7 +28,8 @@ export default class Projects extends Component {
           <Container>
             <h1 className="mb-1">ben kammerling</h1>
             <h2 className="main-subtitle mb-5" >loves to code</h2>
-            <section className="pt-5">
+            <section className="pt-4">
+              <p className="mb-5" style={{ maxWidth: "500px" }}>I started off building sites for family and friends. Come to think of it, I still do. But I'm also open to work with any other lovely humans! Here are some bits of work that I'm proud to have built for a great bunch of people.</p>
               <ul className="list-unstyled">
                 {projects.map((p) => (
                   <li className='' key={p.title}>

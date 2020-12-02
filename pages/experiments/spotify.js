@@ -142,7 +142,11 @@ export default class SpotifyPage extends Component {
         <Container className="text-white">
           <h1 className="mb-1">ben kammerling</h1>
           <h2 className="main-subtitle mb-5" >is a music loving human</h2>
+          <div className="my-5" style={{ maxWidth: "500px" }}>
+            <p>The <a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a> can return loads of really fun data about your music. You can find all the data you see on the Spotify UI (popularity, monthly listens ect.) but also things like energy, danceability and acousticness ratings! <b>So cool.</b></p>
+          </div>
           { !accessToken && 
+          <>
             <Button
               variant="contained"
               color="primary"
@@ -151,11 +155,16 @@ export default class SpotifyPage extends Component {
             >
               Login to Spotify
             </Button>
+            <p className="small mt-2">* When you login here, you will only stay logged in for 1 hour and none of your data is saved.</p>
+          </>
           }
           <Row>
             <Col>
               { topTracks.length > 0 &&
-                <TrackList tracks={topTracks} />
+              <>
+                <h4>Your Top Tracks</h4>
+                <TrackList tracks={topTracks} count={10} />
+              </>
                }
             </Col>
             <Col>
@@ -213,7 +222,7 @@ class TrackList extends Component {
       <>
         <audio src={this.state.urlPlaying} autoPlay={this.state.nowPlaying} id="audio-preview"></audio>
         <List dense className={styles.list}>
-          { this.props.tracks.map((track) => {
+          { this.props.tracks.slice(0,this.props.count).map((track) => {
             return <TrackListItem key={track.uri} nowPlaying={this.state.nowPlaying} trackPlaying={this.state.urlPlaying === track.preview_url} track={track} playSong={this.playSong.bind(this)} />
           }, this)}
         </List>
