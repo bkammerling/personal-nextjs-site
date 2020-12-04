@@ -135,6 +135,7 @@ img {
   flex-direction: row;
   a {
     color: black;
+    line-height: 0;
     svg {
       width: 20px;
       transition: transform .4s;

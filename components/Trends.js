@@ -57,7 +57,7 @@ export default class TrendList extends Component {
           <Card style={{ width: '580px', maxWidth: '100%' }}>
             <CardContent>
               <div style={{ position: 'relative' }}>
-                <i className="fas fa-search" style={{ color: '#bbb', fontSize: '14px'}}></i>
+                <i className="fas fa-search" style={{ color: '#bbb', fontSize: '14px', width: "18px" }}></i>
                 <span className="text-muted d-inline-block mr-2 ml-1">{fullSelected.formattedTraffic} </span>
                 <strong> {fullSelected.title.query}</strong> 
                 <div className={styles.ecosia}>
@@ -75,7 +75,7 @@ export default class TrendList extends Component {
               </div>
               {
                 fullSelected.articles.slice(0,4).map((article,index) => {
-                  return <a className="btn btn-link btn-sm" key={`externalLink-${index}`} target="_blank" href={article.url}><i className="fas fa-external-link-alt"></i>  {article.source}</a>
+                  return <a className="btn btn-link btn-sm" key={`externalLink-${index}`} target="_blank" href={article.url}><i className="fas fa-external-link-alt" style={{ width: "14px" }}></i>  {article.source}</a>
                 }, this)
               }
             </CardContent>
