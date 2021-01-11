@@ -101,6 +101,10 @@ img {
   bottom: 40px;
 }
 
+.none .wrapper {
+  padding: 0;
+}
+
 .purpleGradient {
   background: #9D50BB;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
@@ -146,6 +150,11 @@ img {
   }
 }
 
+.overground {
+  fill: orange;
+  stroke: orange;
+}
+
 .skill-logo {
   display: inline-block;
   max-height: 28px;
@@ -154,6 +163,17 @@ img {
     margin-left: 15px;
   }
 }
+
+
+.mapContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+
 
 .blobWrapper {
   svg {

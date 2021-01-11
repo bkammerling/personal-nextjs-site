@@ -17,6 +17,7 @@ import Link from 'next/link'
 
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
 
@@ -92,6 +93,12 @@ export default function Navigation() {
             <ListItemText primary="Spotify" />
           </ListItem>
         </Link>
+        <Link href="/experiments/maps" passHref>
+          <ListItem button key="maps">
+            <ListItemIcon><Icon className="fas fa-map-marker-alt" style={{ fontSize: 15 }}  /></ListItemIcon>
+            <ListItemText primary="Maps" />
+          </ListItem>
+        </Link>
         <Link href="/experiments/trends" passHref>
           <ListItem button key="trends">
             <ListItemIcon><Icon className="fas fa-chart-line" style={{ fontSize: 15 }}  /></ListItemIcon>
@@ -124,6 +131,9 @@ export default function Navigation() {
         <React.Fragment key='left'>
           <svg style={{ minWidth: "32px", width: "32px", height: "auto", padding: "7px", pointerEvents: 'all', cursor: "pointer" }} onClick={toggleDrawer(true)}  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" className="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
           <div className="socialIcons" style={{ pointerEvents:' all' }}>
+            <a target="_blank" className="mr-3" href="mailto:bkammerling@googlemail.com?subject=Message%20from%20benkammerling.co.uk&body=Hey%20Ben">
+              <Icon className="far fa-envelope" style={{ fontSize: 23 }}  />
+            </a>
             <a target="_blank" className="mr-3" href="http://instagram.com/bkammerling">
               <Icon className="fab fa-instagram" style={{ fontSize: 25 }}  />
             </a>
@@ -132,9 +142,6 @@ export default function Navigation() {
             </a>
             <a target="_blank" className="mr-3" href="https://github.com/bkammerling/">
               <Icon className="fab fa-github" style={{ fontSize: 25 }}  />
-            </a>
-            <a target="_blank" href="mailto:bkammerling@googlemail.com">
-              <Icon className="far fa-envelope" style={{ fontSize: 25 }}  />
             </a>
           </div>
           <Drawer anchor='left' open={state['left']} onClose={toggleDrawer(false)}>

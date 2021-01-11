@@ -46,8 +46,8 @@ export default class Home extends Component {
             <div class="d-block d-sm-flex align-items-start">
               <img src="/images/profile.jpg" style={{ width: '100px', height: 'auto' }} className="rounded-circle mx-auto mx-sm-0 mr-sm-4 mr-lg-5" alt="Ben Kammerling's face"   />
               <div style={{ maxWidth: "500px" }} className="mt-4 mt-sm-0">
-                <p>Hello you! I'm Ben, an energetic, enthusiastic, tea-loving tech-geek. I developing websites, web-apps and tools, and would come under the category <i>nerd</i>.</p>
-                <p>I like to think of myself as a people person too, using my smile to create as much of a positive impact as possible, especially if my current career choices aren't doing it. Did I mention that I bloody love tea.</p>
+                <p>Hello you! I'm Ben, an energetic, enthusiastic, tea-loving tech-geek. I develop websites, web-apps and tools, and could be categorised as a <i>nerd</i>.</p>
+                <p>I like to think of myself as a people person too. You know the annoying guy on walks in the countryside that says hello to everyone, that's me. Did I mention that I bloody love tea.</p>
                 <p>Other things I love:</p>
                 <ul>
                   <li>handstands</li>

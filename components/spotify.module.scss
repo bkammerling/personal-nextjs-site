@@ -5,12 +5,12 @@ $aquamarine: #60D394;
 
 .list {
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   //background-color: white;
   //color: black;
 }
 .text {
-  max-width: 55%;
+  max-width: 65%;
   > span {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -44,4 +44,25 @@ $aquamarine: #60D394;
   &:nth-child(3) {
     background: $orangewheel;
   }
+}
+
+.dataBar {
+  width: 10px;
+  margin-bottom: 1px;
+  &:nth-child(1) {
+    background: $aquamarine;
+  }
+  &:nth-child(2) {
+    background: $maximumyellow;
+  }
+  &:nth-child(3) {
+    background: $orangewheel;
+  }
+}
+span.dataBar {
+  color: black;
+  margin-left: 10px;
+  padding: 2px;
+  font-size: 10px;
+  
 }

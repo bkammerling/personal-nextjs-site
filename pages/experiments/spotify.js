@@ -167,7 +167,7 @@ export default class SpotifyPage extends Component {
               </>
                }
             </Col>
-            <Col>
+            <Col md={6}>
             { radarData.datasets &&
             <>
                <h2>Radar Example</h2>
@@ -222,6 +222,11 @@ class TrackList extends Component {
       <>
         <audio src={this.state.urlPlaying} autoPlay={this.state.nowPlaying} id="audio-preview"></audio>
         <List dense className={styles.list}>
+          <p className="text-right" style={{ marginTop: '-20px', marginBottom: '0' }}>
+            <span className={styles.dataBar}>Energy</span>
+            <span className={styles.dataBar}>Valence</span>
+            <span className={styles.dataBar}>Danceability</span>
+          </p>
           { this.props.tracks.slice(0,this.props.count).map((track) => {
             return <TrackListItem key={track.uri} nowPlaying={this.state.nowPlaying} trackPlaying={this.state.urlPlaying === track.preview_url} track={track} playSong={this.playSong.bind(this)} />
           }, this)}
@@ -254,10 +259,10 @@ class TrackListItem extends Component {
         </ListItemAvatar>
         <ListItemText primary={track.name} secondary={track.artists[0].name} className={styles.text} />
         <ListItemSecondaryAction>
-          <div className="d-flex flex-row">
-            <div className={styles.dataCircle} style={{ transform: `scale(${track.valence})` }}></div>
-            <div className={styles.dataCircle} style={{ transform: `scale(${track.danceability})` }}></div>
-            <div className={styles.dataCircle} style={{ transform: `scale(${track.energy})` }}></div>
+          <div className="d-flex flex-row align-items-end" style={{ height: '60px'}}>
+            <div className={styles.dataBar} style={{ height: `${track.energy*60}px` }}></div>
+            <div className={styles.dataBar} style={{ height: `${track.valence*60}px` }}></div>
+            <div className={styles.dataBar} style={{ height: `${track.danceability*60}px` }}></div>
           </div>
         </ListItemSecondaryAction>
       </ListItem>
