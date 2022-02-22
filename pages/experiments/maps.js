@@ -88,9 +88,17 @@ export default class Map extends Component {
       </Head>
       <div>
         <div ref={el => this.mapContainer = el} className="mapContainer" />
-        <div style={{ zIndex: 1, position: 'relative' }} >
-          <LocationSearchInput setCenter={(latLng) => map.setCenter(latLng)} />
+        
+        <div style={{ zIndex: 1, position: 'relative', background: "rgba(255,255,255,0.8)", padding: '10px 30px 2px' }} >
+          {/*<LocationSearchInput setCenter={(latLng) => map.setCenter(latLng)} /> */}
+          <p>
+            This is the start of a project to help people plan routes using a push bike on TfL public transport. Only some train lines allow this, and it's frustrating to try and use the current apps available while checking the TfL map to see what's allowed.
+          </p>
+          <p>
+            So far, I have only managed to implement a MapBox map and add the bike friendly train lines. Because unlike my fulltime job, this doesn't pay the bills.
+          </p>
         </div>
+        
       </div>
       </>
     )
