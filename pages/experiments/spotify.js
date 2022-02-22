@@ -25,11 +25,13 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const scopes = ['user-read-recently-played', 'user-top-read', 'user-library-read'],
   redirectUri = '/experiments/spotify',
   clientId = '469f085aa1ad4af1af812e7588a18f60',
+  clientSecret = process.env.SPOTIFYSECRET,
   state = new Date().getTime();
 let host = '';
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: clientId
+  clientId,
+  clientSecret
 });
 
 export default class SpotifyPage extends Component {
@@ -143,7 +145,7 @@ export default class SpotifyPage extends Component {
           <h1 className="mb-1">ben kammerling</h1>
           <h2 className="main-subtitle mb-5" >is a music loving human</h2>
           <div className="my-5" style={{ maxWidth: "500px" }}>
-            <p>The <a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a> can return loads of really fun data about your music. You can find all the data you see on the Spotify UI (popularity, monthly listens ect.) but also things like energy, danceability and acousticness ratings! <b>So cool.</b></p>
+            <p>The <a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a> can return loads of really fun data about your music. You can find all the data you see on the Spotify UI (popularity, monthly listens ect.) but also things like energy, danceability and acousticness ratings <b>Much wow!</b></p>
           </div>
           { !accessToken && 
           <>
